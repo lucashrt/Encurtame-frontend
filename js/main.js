@@ -1,7 +1,7 @@
 const urlPost = 'http://localhost:3000/shorten';
 
 async function shorten() {
-    const input = document.querySelector('#inputUrl');
+    const input = document.querySelector('input#inputUrl');
     const output = document.querySelector('div#result');
     const shortUrl = document.querySelector('div#shortUrl');
 
