@@ -72,13 +72,6 @@ section p {
     background-color: #e93a3d;
 }
 
-#result {
-    margin-top: 25px;
-    font-size: 18px;
-    color: #10b981;
-    word-break: break-word;
-}
-
 footer {
     background-color: #ffffff;
     text-align: center;
@@ -86,4 +79,90 @@ footer {
     font-size: 14px;
     color: #888;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.04);
+}
+
+#result {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    color: #555;
+}
+
+.copy-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.copy-text input.text {
+    width: 265px;
+    padding: 10px;
+    font-size: 18px;
+    color: #555;
+    border: none;
+    outline: none;
+    background: #f2f2f2;
+    border-radius: 10px 0 0 10px;
+}
+
+.copy-text button {
+    padding: 10px;
+    background: #fe3c3e;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+.copy-text button:active {
+    background-color: #ff6e71;
+}
+
+.copy-text button:before {
+    content: 'Copiado';
+    position: absolute;
+    margin-right: -15px;
+    top: -45px;
+    right: 0px;
+    background: #fe3c3e;
+    padding: 8px 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    display: none;
+}
+
+.copy-text button:after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: 15px;
+    width: 10px;
+    height: 10px;
+    background: #fe3c3e;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.copy-text.active button:before,
+.copy-text.active button:after {
+    display: block;
 }

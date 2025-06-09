@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encurtame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header><img src="assets/images/logo.png"></header>
 
     <section>
-        <p>Encurtame é um serviço de encurtamento de URLs que permite 
+        <p>Encurtame é um serviço de encurtamento de URLs que permite
             que você crie links curtos e fáceis de compartilhar.</p>
         <p>Insira a URL longa abaixo e clique em "Encurtar"</p>
         <div id="input"><input id="inputUrl" type="text" placeholder="Digite sua URL"></div>
         <div id="shorten"><button id="shorten" onclick="shorten()">Encurtar</button></div>
-        <div id="result"></div>
+        <div id="result" style="display: none;">
+            <div class="result-container">
+                <div class="label">
+                    URL Encurtada:
+                </div>
+                <div class="copy-text" id="shortUrl">
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer>
         <p>&copy; 2025 Encurtame.com - Ferramenta encurtadora de links</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
