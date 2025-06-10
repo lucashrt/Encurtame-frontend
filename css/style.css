@@ -71,6 +71,12 @@ footer {
     color: #555;
 }
 
+.error p {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
 .copy-text {
     display: flex;
     align-items: center;
