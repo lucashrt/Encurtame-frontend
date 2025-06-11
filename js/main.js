@@ -5,7 +5,7 @@ async function shorten() {
     const output = document.querySelector('div#result');
     const shortUrl = document.querySelector('div#shortUrl');
     const label = document.getElementsByClassName('label')[0];
-    const error = document.getElementsByClassName('error')[0];
+    const msgerror = document.getElementsByClassName('error')[0];
 
     const originalUrl = input.value;
 
@@ -14,7 +14,7 @@ async function shorten() {
             originalUrl: originalUrl
         });
 
-        error.style.display = 'none';
+        msgerror.style.display = 'none';
         shortUrl.innerHTML = `<input type="text" class="text" value="${response.data.shortUrl}" readonly><button id="copyButton"><i class="fa fa-clone"></i></button>`;
         label.style.display = 'block';
         output.style.display = 'block';
@@ -22,7 +22,7 @@ async function shorten() {
         copyText();
     } catch (error) {
         console.error('Erro ao encurtar a URL:', error);
-        output.innerHTML = '<p>Erro ao encurtar a URL. Tente novamente.</p>';
+        msgerror.innerHTML = '<p>Erro ao encurtar a URL. Tente novamente.</p>';
     }
 }
 
