@@ -6,6 +6,7 @@ async function shorten() {
     const shortUrl = document.querySelector('div#shortUrl');
     const label = document.getElementsByClassName('label')[0];
     const msgerror = document.getElementsByClassName('error')[0];
+    const loader = document.getElementsByClassName('loader')[0];
 
     const originalUrl = input.value;
 
@@ -15,14 +16,30 @@ async function shorten() {
         });
 
         msgerror.style.display = 'none';
+        loader.style.display = 'none';
         shortUrl.innerHTML = `<input type="text" class="text" value="${response.data.shortUrl}" readonly><button id="copyButton"><i class="fa fa-clone"></i></button>`;
         label.style.display = 'block';
-        output.style.display = 'block';
         shortUrl.style.display = 'block';
         copyText();
     } catch (error) {
+        const statusCode = error.response?.status;
         console.error('Erro ao encurtar a URL:', error);
-        msgerror.innerHTML = '<p>Erro ao encurtar a URL. Tente novamente.</p>';
+        loader.style.display = 'none';
+        shortUrl.style.display = 'none';
+        label.style.display = 'none';
+        output.style.display = 'block';
+        msgerror.style.display = 'block';
+        if (statusCode == 403) {
+            msgerror.innerHTML = '<p>A URL fornecida é potencialmente maliciosa.</p>';
+            msgerror.innerHTML += '<p>Por favor, tente novamente com uma URL diferente.</p>';
+        } else if (statusCode == 400) {
+            msgerror.innerHTML = '<p>URL inválida!</p>';
+            msgerror.innerHTML += '<p>Tente novamente</p>';
+        } else if (statusCode == 500) {
+            msgerror.innerHTML = '<p>Erro interno do servidor. Tente novamente mais tarde.</p>';
+        } else {
+            msgerror.innerHTML = '<p>Ocorreu um erro desconhecido. Tente novamente.</p>';
+        }
     }
 }
 
@@ -52,12 +69,20 @@ function startBtn() {
     const shortUrl = document.querySelector('div#shortUrl');
     const label = document.getElementsByClassName('label')[0];
     const error = document.getElementsByClassName('error')[0];
+    const loader = document.getElementsByClassName('loader')[0];
+
 
     const regex = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(\S*)?$/;
 
     if (regex.test(input)) {
+        error.style.display = 'none';
+        shortUrl.style.display = 'none';
+        label.style.display = 'none';
+        loader.style.display = 'block';
+        output.style.display = 'block';
         shorten();
     } else {
+        loader.style.display = 'none';
         shortUrl.style.display = 'none';
         label.style.display = 'none';
         output.style.display = 'block';
