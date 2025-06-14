@@ -37,6 +37,8 @@ async function shorten() {
             msgerror.innerHTML += '<p>Tente novamente</p>';
         } else if (statusCode == 500) {
             msgerror.innerHTML = '<p>Erro interno do servidor. Tente novamente mais tarde.</p>';
+        } else if (statusCode == 503) {
+            msgerror.innerHTML = '<p>Erro ao verificar a URL. Tente novamente mais tarde.</p>';
         } else {
             msgerror.innerHTML = '<p>Ocorreu um erro desconhecido. Tente novamente.</p>';
         }
