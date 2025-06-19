@@ -1,4 +1,4 @@
-const urlPost = 'http://localhost:3000/shorten';
+const urlPost = 'https://encurtameapi.onrender.com/shorten';
 
 async function shorten() {
     const input = document.querySelector('input#inputUrl');
